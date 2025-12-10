@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Dice Roller{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4 mb-4">Welcome to the Dice Roller</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Roll Virtual Dice</h5>
+                    <p class="card-text">A simple web application that allows you to roll virtual dice of different types and keep track of your roll history.</p>
+                    
+                    {% if not session.logged_in %}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg mb-2">Login</a>
+                        <a href="{{ url_for('register') }}" class="btn btn-outline-primary btn-lg">Register</a>
+                    </div>
+                    {% else %}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a href="{{ url_for('dice_roller') }}" class="btn btn-success btn-lg">Roll Some Dice!</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h3>Roll Dice</h3>
+                    <p>Choose from various dice types: d4, d6, d8, d10, d12, d20, and d100</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h3>Track History</h3>
+                    <p>View your roll history and statistics over time</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h3>User Accounts</h3>
+                    <p>Create an account to save your roll history</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
